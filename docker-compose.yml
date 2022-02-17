@@ -1,17 +1,18 @@
 version: "3.8"
 
 services:
-  mysql:
-    container_name: mysql
-    image: mysql:latest
+  psql:
+    container_name: psql
+    image: postgres:13.1
     ports:
-      - 3306:3306
+      - 5432:5432
     volumes:
-      # - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
-      - mysql-data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - psql-data:/var/lib/postgresql/data
     environment:
-      MYSQL_ROOT_PASSWORD: "root_grapefruits"
+      POSTGRES_USER: joren
+      POSTGRES_PASSWORD: grapefruits
 
 # persist these volumes
 volumes:
-  mysql-data:
+  psql-data:

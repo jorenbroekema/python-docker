@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:latest
+    ports:
+      - 3306:3306
+    volumes:
+      # - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+      - mysql-data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root_grapefruits"
+
+# persist these volumes
+volumes:
+  mysql-data:
